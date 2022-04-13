@@ -7,21 +7,24 @@ class Raffle:
         pass
 
     @staticmethod
-    def choose_winner(amount, raffle_list, print_bool=False):
+    def choose_winner(amount, raffle_list, already_won=[], print_bool=False):
         seen = set()
-        win_ind = -1
+        length = len(raffle_list)
+        raffle_list.append(('null', 0))
+        win_ind = length
         seen.add(win_ind)
 
-        winners = []
+        winners = [('null', 0)] + already_won
         for i in range(amount):
-            while win_ind in seen:
+            while win_ind in seen and raffle_list[win_ind] in winners:
                 win_ind = int(quantumrandom.randint(0, len(raffle_list)))
             seen.add(win_ind)
             winners.append(raffle_list[win_ind])
             if print_bool:
                 Raffle.print_winner(i, raffle_list[win_ind])
 
-        return winners
+
+        return winners[len(already_won) + 1:]
 
     @staticmethod
     def choose_ip_only(amount, raffle_list, print_bool=False):
