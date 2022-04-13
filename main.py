@@ -50,6 +50,7 @@ def riddle_three_raffle():
             if winner[1] == 1:
                 sage_raffle_list.append(winner)
             elif winner[1] == 2:
+                already_won.append(winner)
                 already_sage.append(winner)
 
         if len(sage_raffle_list) > 0:
