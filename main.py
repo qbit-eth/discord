@@ -31,14 +31,15 @@ def second_raffle():
 
 def riddle_three_raffle():
     already_won = []
-    for name, raffle_list in [('ICHIRO', raffle.ICHIRO_WINNERS),
-                                ('JIRO', raffle.JIRO_WINNERS),
-                                ('SABURO', raffle.SABURO_WINNERS),
-                                ('DRAWER', raffle.DRAWER_WINNERS)]:
+    for name, raffle_list, amount in [('ICHIRO', raffle.ICHIRO_WINNERS, 7),
+                                    ('JIRO', raffle.JIRO_WINNERS, 7),
+                                    ('SABURO', raffle.SABURO_WINNERS, 7),
+                                    ('DRAWER', raffle.DRAWER_WINNERS, 10),
+                                    ('DRAWER', raffle.DRAWER_WINNERS, 25)]:
 
         print('\nRIDDLE #3 SOLVER RAFFLE FOR {}'.format(name))
 
-        winners = raffle.Raffle.choose_winner(7, raffle_list, already_won, True)
+        winners = raffle.Raffle.choose_winner(amount, raffle_list, already_won, True)
 
         already_sage = []
         sage_raffle_list = []
